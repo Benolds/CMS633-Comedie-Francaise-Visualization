@@ -72,7 +72,7 @@ window.onload = function() {
       .style("width", function(d) {
         return d.total_sold + "px"; //x(d.total_sold) + "px";
       })
-      .text(function(d) { return d.total_sold; }); // dates
+      .text(function(d) { return d.date + ", sold: " + d.total_sold; }); // dates
 
   d3.select(".chart_expensive")
     .selectAll("div")
@@ -82,7 +82,7 @@ window.onload = function() {
         console.log(d.total_sold);
         return 10 * d.total_sold + "px"; //x(d.total_sold) + "px";
       })
-      .text(function(d) { return d.total_sold; }); // dates
+      .text(function(d) { if(d.total_sold > 0) { return d.total_sold; } else { return "-"; } }); // dates
 
 
   function httpGet(theUrl)
